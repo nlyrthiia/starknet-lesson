@@ -17,6 +17,7 @@ import { useParams } from "react-router-dom";
 import CairoWorker from "@/utils/worker.js?worker";
 import toast, { Toaster } from "react-hot-toast";
 import StarknetIcon from "@/assets/starknet.svg";
+import { Link } from "react-router-dom";
 
 const worker = new CairoWorker();
 
@@ -36,6 +37,8 @@ export default function Component() {
     });
     // setCodePlaceHolder(codePlaceholderContent[lessonId - 1]);
     setValue(codePlaceholderContent[lessonId - 1]);
+    setCompileResult("Compiling...\nThis may take a few seconds.  ");
+    setOutputResult("Output\nThis may take a few seconds.  ");
 
     window.history.pushState({}, "0", `/lesson/${lessonId}`);
   }, [lessonId]);
@@ -236,7 +239,18 @@ export default function Component() {
               {mdDisplayName.map((item: string, index: number) => {
                 return (
                   <li key={index}>
-                    <a href={`/lesson/${index + 1}`}>{item}</a>
+                    <Link
+                      to={`/lesson/${index + 1}`}
+                      onClick={() => {
+                        const close: any = document.querySelector(
+                          '[aria-label="close sidebar"]'
+                        );
+                        close && close.click();
+                        setLessonId(index + 1);
+                      }}
+                    >
+                      {item}
+                    </Link>
                   </li>
                 );
               })}
