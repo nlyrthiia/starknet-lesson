@@ -37,7 +37,7 @@ export default function Component() {
     // setCodePlaceHolder(codePlaceholderContent[lessonId - 1]);
     setValue(codePlaceholderContent[lessonId - 1]);
 
-    window.history.pushState({}, 0, `/lesson/${lessonId}`);
+    window.history.pushState({}, "0", `/lesson/${lessonId}`);
   }, [lessonId]);
 
   const [showResult, setShowResult] = useState(true);
