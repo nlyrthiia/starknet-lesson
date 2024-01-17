@@ -236,16 +236,7 @@ export default function Component() {
               {mdDisplayName.map((item: string, index: number) => {
                 return (
                   <li key={index}>
-                    <a
-                      onClick={(e: any) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-
-                        setLessonId(index + 1);
-                      }}
-                    >
-                      {item}
-                    </a>
+                    <a href={`/lesson/${index + 1}`}>{item}</a>
                   </li>
                 );
               })}
