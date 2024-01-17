@@ -7,6 +7,7 @@ function App() {
     <Router>
       <div>
         <Routes>
+          <Route path="/" element={<Lesson />} />
           <Route path="/lesson/:lessonId" Component={Lesson} />
         </Routes>
       </div>

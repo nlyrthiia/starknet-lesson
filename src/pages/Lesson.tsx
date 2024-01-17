@@ -16,6 +16,7 @@ import {
 import { useParams } from "react-router-dom";
 import CairoWorker from "@/utils/worker.js?worker";
 import toast, { Toaster } from "react-hot-toast";
+import StarknetIcon from "@/assets/starknet.svg";
 
 const worker = new CairoWorker();
 
@@ -41,10 +42,10 @@ export default function Component() {
 
   const [showResult, setShowResult] = useState(true);
   const [compileResult, setCompileResult] = useState(
-    "Compiling...\nThis may take a few seconds.  ",
+    "Compiling...\nThis may take a few seconds.  "
   );
   const [outputResult, setOutputResult] = useState(
-    "Output\nThis may take a few seconds.  ",
+    "Output\nThis may take a few seconds.  "
   );
 
   const onChange = useCallback((val: any) => {
@@ -122,7 +123,7 @@ export default function Component() {
           ),
           {
             duration: 3000,
-          },
+          }
         );
       }
     };
@@ -131,7 +132,10 @@ export default function Component() {
   return (
     <div className="flex flex-col h-screen bg-gray-100 overflow-hidden">
       <div className="flex items-center justify-between p-4 bg-white">
-        <div className="flex-grow flex-1 cursor-default">Starknet Lesson</div>{" "}
+        <div className="flex-grow flex-1 cursor-default flex items-center">
+          <img src={StarknetIcon} className="w-10 rounded-lg mr-4" alt="" />
+          <h1 className="font-bold text-lg">Starknet Lesson</h1>
+        </div>{" "}
         <div className="flex space-x-2 flex-1">
           <button className="btn btn-ghost" onClick={() => handleCompile()}>
             Compile
