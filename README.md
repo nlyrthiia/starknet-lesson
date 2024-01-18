@@ -15,3 +15,9 @@ Embark on a cutting-edge journey with our interactive courses, designed to immer
 - Ready to begin? Dive into our courses and fast-track your journey to becoming a proficient Cairo developer.
 
 Join us at Starknet Lesson, where learning meets innovation, and take your first step towards mastering Cairo programming, version 2.
+
+## Our Outstanding Students
+
+At Starknet Lesson, we take immense pride in showcasing our outstanding students. These individuals have not only demonstrated exceptional technical skills in our courses but also excelled in problem-solving and innovative thinking.
+
+### Recent Star Students

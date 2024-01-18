@@ -2,6 +2,7 @@ import WalletBar from "@/components/WalletConnect";
 import {
   BackwardIcon,
   Bars4Icon,
+  CheckIcon,
   ForwardIcon,
 } from "@heroicons/react/24/solid";
 import { useCallback, useEffect, useState } from "react";
@@ -128,6 +129,17 @@ export default function Component() {
             duration: 3000,
           }
         );
+
+        const lessonPass = localStorage.getItem("lessonPass");
+        if (lessonPass) {
+          const lessonPassArr = JSON.parse(lessonPass);
+          if (lessonPassArr.indexOf(lessonId) < 0) {
+            lessonPassArr.push(lessonId);
+            localStorage.setItem("lessonPass", JSON.stringify(lessonPassArr));
+          }
+        } else {
+          localStorage.setItem("lessonPass", JSON.stringify([lessonId]));
+        }
       }
     };
   };
@@ -249,7 +261,13 @@ export default function Component() {
                         setLessonId(index + 1);
                       }}
                     >
-                      {item}
+                      {index + 1}. {item}
+                      {localStorage.getItem("lessonPass") &&
+                        JSON.parse(
+                          localStorage.getItem("lessonPass") || ""
+                        ).indexOf(index + 1) > -1 && (
+                          <CheckIcon className="w-6 h-6 text-green-600 flex justify-self-end" />
+                        )}
                     </Link>
                   </li>
                 );
@@ -271,7 +289,7 @@ export default function Component() {
           <ForwardIcon
             className="w-8 h-8 ml-4"
             onClick={() => {
-              lessonId < 10 && setLessonId(lessonId + 1);
+              lessonId < 14 && setLessonId(lessonId + 1);
             }}
           />
         </div>
